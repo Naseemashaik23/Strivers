@@ -1,0 +1,38 @@
+brute:
+import java.util.*;
+class pat {
+    void sim(int[] array){
+        Arrays.sort(array);
+        int n=array.length;
+        int x=array[n-1];
+        System.out.println(x);
+    }
+    public static void main(String[] args) {
+        int[] array={1,2,9,4,6};
+        int n=array.length;
+        pat p=new pat();
+        p.sim(array);
+    }
+}
+
+optimal:
+
+import java.util.*;
+class pat {
+    void sim(int[] arr){
+        int n=arr.length;
+        int max=arr[0];
+        for(int i=0;i<n;i++){
+            if(arr[i]>max){
+                max=arr[i];
+            }
+        }
+        System.out.println(max);
+    }
+    public static void main(String[] args) {
+        int[] array={1,2,9,4,6};
+        int n=array.length;
+        pat p=new pat();
+        p.sim(array);
+    }
+}
