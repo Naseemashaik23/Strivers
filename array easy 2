@@ -1,0 +1,112 @@
+brute:
+import java.util.*;
+class pat {
+    void sim(int[] array){
+        Arrays.sort(array);
+        int n=array.length;
+        int small=array[0];
+        int large=array[n-1];
+        int secondsmall=-1;
+        int secondlarge=-1;
+        for(int i=0;i<n;i++){
+            if(array[i]!=small){
+                secondsmall=array[i];
+                break;
+            }
+        }
+        for(int i=n-1;i>=0;i--){
+            if(array[i]!=large){
+                secondlarge=array[i];
+                break;
+            }
+        }
+         System.out.println("second larges"+secondlarge);
+         System.out.println("second small"+secondsmall);
+        
+    }
+    public static void main(String[] args) {
+        int[] array={1,2,9,4,6};
+        int n=array.length;
+        pat p=new pat();
+        p.sim(array);
+    }
+}
+
+
+
+better:
+import java.util.*;
+class pat{
+    void mean(int[] array,int n){
+        int small=Integer.MAX_VALUE;int secondsmall=Integer.MAX_VALUE;
+        int large=Integer.MIN_VALUE;int secondlarge=Integer.MIN_VALUE;
+         if (n == 0 || n == 1) {
+            System.out.println(-1 + " " + -1);  
+            return;
+        }
+
+        for(int i=0;i<n;i++){
+          small= Math.min(small,array[i]);
+          large=Math.max(large,array[i]);
+        }
+        for(int i=0;i<n;i++){
+           if(array[i]>small&&array[i]<secondsmall){
+                secondsmall=array[i];
+            }
+            if(array[i]<large&&array[i]>secondlarge){
+                secondlarge=array[i];
+            }
+        }
+        System.out.println("second small: "+secondsmall);
+        System.out.println("second large: "+secondlarge);
+    }  
+    public static void main(String[] args){
+        int[] arr={8,0,2,4,7,1,9};
+        int n=arr.length;
+        pat p=new pat();
+        p.mean(arr,n);
+    }
+      
+}
+optimal:
+import java.util.*;
+class pat{
+    void mean(int[] array){
+        int n=array.length;
+        int small=Integer.MAX_VALUE;int secondsmall=Integer.MAX_VALUE;
+        int large=Integer.MIN_VALUE;int secondlarge=Integer.MIN_VALUE;
+         if (n<2) {
+            System.out.println("-1");
+        }
+        
+        for(int i=0;i<n;i++){
+            if(array[i]<small){
+                secondsmall=small;
+                small=array[i];
+            }
+            else if(array[i]>small&&array[i]<secondsmall){
+                secondsmall=array[i];
+            }
+        }
+         for(int i=0;i<n;i++){
+            if(array[i]>large){
+                secondlarge=large;
+                large=array[i];
+            }
+             else if(array[i]<large&&array[i]>secondlarge){
+                secondlarge=array[i];
+            }
+        }
+        
+        System.out.println("second small: "+secondsmall);
+        System.out.println("second large: "+secondlarge);
+    }  
+    public static void main(String[] args){
+        int[] arr={0,2,4,7,1,9};
+        int n;
+        pat p=new pat();
+        p.mean(arr);
+    }
+      
+}
+
