@@ -1,0 +1,61 @@
+burte:
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        int[] arr={1,4,2,6,8};
+        int n=arr.length;
+        boolean sorted=true;
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                if(arr[i]>arr[j]){
+                   sorted=false;
+                   break;
+                }
+            }
+        }
+        System.out.println("sorted:"+sorted);
+    }
+}
+brute:
+import java.util.*;
+class Main {
+    static boolean suu(int[] arr) {
+        int n=arr.length;
+        for(int i=0;i<n;i++){
+            for(int j=i+1;j<n;j++){
+                if(arr[i]>arr[j]){
+                   return false;
+                }
+            }
+        }
+        return true;
+    }
+    public static void main(String[] args){
+        int[] array={1,2,6,8};
+        int n;
+        Main m=new Main();
+        boolean result= m.suu(array);
+        System.out.println(result);
+    }
+}
+    optimal:
+import java.util.*;
+class Solution {
+    public boolean check(int[] nums) {
+        int n=nums.length;
+        for(int i=1;i<n;i++){
+            if(nums[i]<nums[i-1]){
+                return false;
+            }
+        }
+        return true;
+    }
+    
+ public static void main(String[] args){
+        int[] nums={1,2,5};
+        int n;
+        Solution s=new Solution();
+        boolean result=s.check(nums);
+        System.out.println(result);
+    }  
+}
