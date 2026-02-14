@@ -1,0 +1,19 @@
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        HashMap<Integer,Integer> map= new HashMap<>();
+        int[] arr1={1,2,3,4,5};
+        int[] arr2={2,7,8,9};
+        int n=arr1.length;
+        int m=arr2.length;
+        int i;
+        for(i=0;i<n;i++){
+            map.put(arr1[i],1);
+        }
+        for(i=0;i<m;i++){
+            map.put(arr2[i],1);
+        }
+        System.out.println(map.keySet());
+    
+    }
+}
